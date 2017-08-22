@@ -1,0 +1,3 @@
+C:\Users\RJmillano\source\chatbot\myfirstjs\myfirstjs\obj\Debug\myfirstjs.njsprojResolveAssemblyReference.cache
+C:\Users\RJmillano\source\chatbot\myfirstjs\myfirstjs\obj\Debug\myfirstjs.njsproj.CoreCompileInputs.cache
+C:\Users\RJmillano\source\chatbot\myfirstjs\myfirstjs\bin\Microsoft.NodejsTools.WebRole.dll

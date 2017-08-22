@@ -1,0 +1,2 @@
+C:\Users\RJmillano\source\chatbot\app\app\obj\Debug\app.njsproj.CoreCompileInputs.cache
+C:\Users\RJmillano\source\chatbot\app\app\bin\Microsoft.NodejsTools.WebRole.dll
