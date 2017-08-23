@@ -1,11 +1,22 @@
+// app.js
 var express = require('express');
 var app = express();
-app.get('/', function (req, res) {
-    res.send('Hello World');
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+app.use(express.static(__dirname + '/node_modules'));
+app.get('/', function (req, res, next) {
+    res.sendFile(__dirname + '/index.html');
 });
-var server = app.listen(3030, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log("Example app listening at http://%s:%s", host, port);
+io.on('connection', function (client) {
+    console.log('Client connected...');
+    client.on('join', function (data) {
+        console.log(data);
+    });
+    client.on('messages', function (data) {
+        client.emit('broad', data);
+        //		client.broadcast.emit('broad',data);
+        //client.broadcast.emit('broad',data);
+    });
 });
+server.listen(4200);
 //# sourceMappingURL=app.js.map

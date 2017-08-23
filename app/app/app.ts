@@ -1,13 +1,28 @@
-﻿var express = require('express');
+﻿// app.js
+var express = require('express');
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
-app.get('/', function (req, res) {
-    res.send('Hello World');
+app.use(express.static(__dirname + '/node_modules'));
+app.get('/', function (req, res, next) {
+    res.sendFile(__dirname + '/index.html');
+});
+
+
+io.on('connection', function (client) {
+    console.log('Client connected...');
+
+    client.on('join', function (data) {
+        console.log(data);
+    });
+
+    client.on('messages', function (data) {
+        client.emit('broad', data);
+        //		client.broadcast.emit('broad',data);
+        //client.broadcast.emit('broad',data);
+    });
+
 })
 
-var server = app.listen(3030, function () {
-    var host = server.address().address
-    var port = server.address().port
-
-    console.log("Example app listening at http://%s:%s", host, port)
-})
+server.listen(4200);
